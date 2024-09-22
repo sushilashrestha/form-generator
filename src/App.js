@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Form from "./components/Form";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  const schema = [
+    {type:'text', name:'name', label:'Name'},
+    {type:'email', name:'email', label:'Email'},
+    {type:'select', name:'FieldOfInterest', label:'Field of Interest', options : [
+      { value: 'webDevelopment', label: 'Web Development' },
+      { value: 'dataScience', label: 'Data Science' },
+      { value: 'ai', label: 'Artificial Intelligence' },,
+    ]},
+    {type: 'textarea', name:'message', label:'Message'},
+    {type:'text', name:'address', label:'Address'},
+  ];
+
+  const handleSubmit = (data) => {
+    console.log('Form submitted:', data);
+  };
+
+  return(
+    <div>
+      <h1>User Info</h1>
+      <Form schema={schema} onSubmit={handleSubmit} />
     </div>
   );
-}
-
+};
 export default App;
